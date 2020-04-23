@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -45,8 +45,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+export default function SignIn(props) {
   const classes = useStyles();
+
+  const [zip, newState] = useState('');
+  
+  const handleSubmit = e => {
+    e.preventDefault();
+    this.props.getProducts(this.state.zip)
+    e.target.reset()
+    this.setState({submitted: true})
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -55,37 +64,36 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Welcome to FreshBytes!
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit={handleSubmit} noValidate>
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="Name"
-            name="email"
+            label="Zipcode"
+            value={zip}
+            onChange={e => newState(e.target.value)}
             // autoComplete="email"
             autoFocus
           />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
+          <br></br>
+          <br></br>
+          <Link to="/main" underline="none">
+            <Button
+            // component={Link} to="/main"
+            type="submit"
             fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            // autoComplete="current-password"
-          />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
-
-          {/* Testing Out Clickable Button that Leads to Home Page (input zip code) */}
-          
-          <Link to="/main">
+            variant="contained"
+            color="primary"
+            role="img"
+            underline="none"
+          >
+            ❤️ Search Your Local Farmers ❤️
+            </Button>
+          </Link>
+          <br></br>
+          <br></br>
+          <Link to="/new">
             <Button
             // component={Link} to="/main"
             type="submit"
@@ -93,26 +101,11 @@ export default function SignIn() {
             variant="contained"
             color="primary"
           >
-            Sign In
+            🥦 Sell Your Produce 🥦
             </Button>
           </Link>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link className="question" href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
         </form>
-        <br></br>
-        <div className="gsign">
-              <div className="g-signin2" data-onsuccess="onSignIn" />
-        </div>
+        <br></br>      
       </div>
       <Box mt={8}>
         <Copyright />

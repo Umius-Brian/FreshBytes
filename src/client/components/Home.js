@@ -11,8 +11,7 @@ class Home extends React.Component {
   
   //sets state of this component property to the name of the input field and grabs value of input field
   handleChange = (e) => {
-    const {name, value} = e.target
-    this.setState({[name]: value})
+    this.setState({[e.target.name]: e.target.value})
   }
   
   //passing local state of this component to redux store through the getProducts action
@@ -27,12 +26,11 @@ class Home extends React.Component {
     if(this.state.submitted === true) return <Redirect to='/products' />
     else return(
       <div style={styles.container}>
-        <nav style={styles.nav}></nav>
         <div style={styles.hero}>
         <div style={styles.callToAction}>
         <h1 style={styles.header}>Welcome to Neighbor's Table!</h1>
         <form onChange={this.handleChange} onSubmit={this.handleSubmit} style={styles.form}>
-          <input type="text" name='zip' placeHolder='enter your zip' style={styles.input}/>
+          <input type="text" name='zip' placeholder='enter your zip' style={styles.input}/>
           <button type="submit" style={styles.button}>Search</button>
           <Link to="/new" ><button style={styles.button}>Sell Your Produce</button></Link>
         </form>
@@ -50,7 +48,7 @@ const styles = {
     color:'green'
   },
   hero:{
-  backgroundImage: 'url(' + 'https://www.tranquilitylabs.com/wp-content/uploads/2016/07/bigstock-Female-Stall-Holder-At-Farmers-87399266-1024x683.jpg' + ')',
+  backgroundImage: 'url(' + 'https://images.unsplash.com/uploads/141247613151541c06062/c15fb37d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80' + ')',
   height: '100vh',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
