@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, {useState} from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
@@ -52,8 +53,8 @@ export default function SignIn(props) {
   const [zip, setZip] = useState(''); //take the 'zip' and pass it as props to 'productList'
   
   const handleSubmit = e => {
-    e.preventDefault();
-    props.getProducts(zip)
+    // e.preventDefault();
+    props.getProducts(zip);
 }
 
   return (
@@ -66,19 +67,19 @@ export default function SignIn(props) {
         </Typography>
         <br></br>
         <br></br>
-        <Link to="/new" style={{textDecoration:"none"}}>
+          <Link to="/new" style={{textDecoration:"none"}}>
             <Button
-            underline="none"
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            onChange={e => setZip(e.target.value)}
-          >
-            🥦 Sell Your Produce 🥦
+              underline="none"
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+           
+            >
+              🥦 Sell Your Produce 🥦
             </Button>
           </Link>
-        <div className={classes.form}>
+        <div className={classes.form} onSubmit={handleSubmit}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -87,7 +88,6 @@ export default function SignIn(props) {
             label="Zipcode"
             value={zip}
             onChange={e => setZip(e.target.value)}
-            // autoComplete="email"
             autoFocus
           />
           <br></br>
@@ -95,12 +95,11 @@ export default function SignIn(props) {
           <Link to="/products" style={{textDecoration:"none"}}>
             <Button
             fullWidth
+            type="submit"
             variant="contained"
             color="primary"
             role="img"
-            underline="none"
             onClick={handleSubmit}
-            underline='none'
           >
             ❤️ Search Your Local Farmers ❤️
             </Button>

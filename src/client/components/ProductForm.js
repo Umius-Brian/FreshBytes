@@ -18,7 +18,7 @@ class ProductForm extends React.Component {
   
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.getProducts(this.state)
+    this.props.addProduct(this.state)
     this.setState({submitted: true})
   }
 
@@ -33,6 +33,8 @@ class ProductForm extends React.Component {
             </Link>
           </div>
         </nav>
+
+
         <div className="inspiration"></div>
         <div style={styles.formContainer} className="formContainer">
           <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
@@ -69,6 +71,10 @@ class ProductForm extends React.Component {
           </form>
         </div>
       </div>
+
+
+
+      
     )
   }
 }

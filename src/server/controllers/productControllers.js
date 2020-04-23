@@ -3,6 +3,7 @@ const db = require('../models/models.js');
 const productControllers = {};
 // read portion of CRUD
 productControllers.getZip = (req, res, next) => {
+  // console.log('Inside productController.getZip!');
   const zipGetReq = 
                     `SELECT s.name, s.about, p.item_name, p.price, p.description
                     FROM product p
@@ -13,6 +14,7 @@ productControllers.getZip = (req, res, next) => {
 
   db.query(zipGetReq, zip)
     .then((products) => {
+      // console.log('got product query results back!')
       res.locals.products = products.rows;
       next();
     })
@@ -25,7 +27,7 @@ productControllers.productSave = (req, res, next) => {
   } = req.body.product;
   const sellerId = res.locals.seller_id;
   const values = [ item_name, price, description, seller_id];
-  console.log('this is our sellerId in productSave: ', seller_id);
+  // console.log('this is our sellerId in productSave: ', seller_id);
   // create portion of CRUD
   // on insert you need to pass in the res.locals id from sellSave
   const saveProduct = ` INSERT INTO product(item_name, price, description)

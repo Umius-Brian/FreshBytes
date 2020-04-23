@@ -7,6 +7,7 @@ const initialState = {
 const productsReducer = (state = initialState, action) => {
   switch (action.type) {
     case(types.GET_PRODUCTS):
+      // console.log('GET_PRODUCT action.payload:', action.payload);
       const fetchedList = action.payload;
     
       return{

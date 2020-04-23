@@ -13,10 +13,10 @@ const Product = ({ item_name, name, price, about, title, descripton, email, phon
     if(toggle) return (
       <div style={styles.card} onClick={handleModal}>
         <div style={styles.modal}>
-          <SellerModal closeModal={handleModal} about={about} phone={phone} email={email} name={name}/>
+
         </div>
       <div style={styles.photoContainer}>
-        <img src='https://picsum.photos/200/300' style={styles.image}/>
+        <img src='http://placekitten.com/200/300' style={styles.image}/>
       </div>
       <div>
         <h3 style={styles.headerFont}>{title}</h3>
