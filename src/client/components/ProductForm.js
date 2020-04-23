@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import '../stylesheets/app.css';
 
 class ProductForm extends React.Component {
@@ -21,7 +21,7 @@ class ProductForm extends React.Component {
   }
 
   render() {
-    if(this.state.submitted === true) return <Redirect to='/main'/>
+    if(this.state.submitted === true) return <Redirect to='/'/>
     else return (
       <div>
         <nav style={styles.nav}>

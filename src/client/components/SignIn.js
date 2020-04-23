@@ -80,7 +80,7 @@ export default function SignIn(props) {
           />
           <br></br>
           <br></br>
-          <Link to="/main" underline="none">
+          <Link to="/products" underline="none">
             <Button
             // component={Link} to="/main"
             type="submit"

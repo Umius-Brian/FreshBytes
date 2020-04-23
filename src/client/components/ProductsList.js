@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Product from './Product';
+import '../../../public/styles.css';
 
 const ProductsList = ({ products }) => {
 
@@ -14,7 +15,7 @@ const ProductsList = ({ products }) => {
         <nav style={styles.nav}>
           <div>
             <Link to='/main' style={styles.navLinkHome}>
-              <img src="../../../public/assets/NeighborsTableUC.png" height="150"></img>
+              <img src="../../../public/assets/NeighborsTableIcon.png" height="150"></img>
             </Link>
           </div>
           <Link to='/new' style={styles.navLinkProduct}> {/* Input text here, position is to the right of NT */ }</Link>
@@ -33,6 +34,7 @@ const styles = {
     gridGap: '1rem',
     margin: '10rem 2rem'
   },
+    
   nav: {
     display: 'flex',
     // justifyContent: 'space-between',

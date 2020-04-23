@@ -1,3 +1,6 @@
+//change to buy page
+
+
 import React from 'react'
 
 const SellerModal = ({name, about, email, phone, closeModal}) => {
@@ -5,10 +8,9 @@ const SellerModal = ({name, about, email, phone, closeModal}) => {
     <div>
       <div style={styles.modalContent}>
         <span style={styles.close} onClick={closeModal}>close</span>
-        <h1>Seller:{name}</h1>
-        <h4>Email:{email}</h4>
-        <h4>Phone:{phone}</h4>
-        <p>About:{about}</p>
+        <h1>Seller: {name}</h1>
+        <h4>Phone: {phone}</h4>
+        <p>About: {about}</p>
       </div>
     </div>
   )
