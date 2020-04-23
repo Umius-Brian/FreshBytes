@@ -11,6 +11,7 @@ import Login from '../containers/Login';
 
 
 const mapStateToProps = state => ({
+  // isLoggedIn: state.products.isLoggedIn // ==> True or false
   products: state.products.productsList,
 })
 
@@ -23,6 +24,9 @@ class ProductsContainer extends React.Component {
 
   render() {
     const { getProducts, addProduct, products } = this.props
+
+    // If isLoggedIn === true, route to /main
+    // If !isLoggedIn, route to '/'
 
     return (
       <div>

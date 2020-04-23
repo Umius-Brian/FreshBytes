@@ -49,14 +49,12 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn(props) {
   const classes = useStyles();
 
-  const [zip, newState] = useState('');
+  const [zip, setZip] = useState(''); //take the 'zip' and pass it as props to 'productList'
   
   const handleSubmit = e => {
     e.preventDefault();
-    this.props.getProducts(this.state.zip)
-    e.target.reset()
-    this.setState({submitted: true})
-  }
+    props.getProducts(zip)
+}
 
   return (
     <Container component="main" maxWidth="xs">
@@ -66,7 +64,21 @@ export default function SignIn(props) {
         <Typography component="h1" variant="h5">
           Welcome to Neighbor's Table!
         </Typography>
-        <form className={classes.form} onSubmit={handleSubmit} noValidate>
+        <br></br>
+        <br></br>
+        <Link to="/new" style={{textDecoration:"none"}}>
+            <Button
+            underline="none"
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            onChange={e => setZip(e.target.value)}
+          >
+            🥦 Sell Your Produce 🥦
+            </Button>
+          </Link>
+        <div className={classes.form}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -74,39 +86,26 @@ export default function SignIn(props) {
             fullWidth
             label="Zipcode"
             value={zip}
-            onChange={e => newState(e.target.value)}
+            onChange={e => setZip(e.target.value)}
             // autoComplete="email"
             autoFocus
           />
           <br></br>
           <br></br>
-          <Link to="/products" underline="none">
+          <Link to="/products" style={{textDecoration:"none"}}>
             <Button
-            // component={Link} to="/main"
-            type="submit"
             fullWidth
             variant="contained"
             color="primary"
             role="img"
             underline="none"
+            onClick={handleSubmit}
+            underline='none'
           >
             ❤️ Search Your Local Farmers ❤️
             </Button>
           </Link>
-          <br></br>
-          <br></br>
-          <Link to="/new">
-            <Button
-            // component={Link} to="/main"
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-          >
-            🥦 Sell Your Produce 🥦
-            </Button>
-          </Link>
-        </form>  
+        </div>  
       </div>
       <Box mt={8}>
         <Copyright />

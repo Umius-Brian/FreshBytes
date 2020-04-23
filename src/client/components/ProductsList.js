@@ -1,68 +1,88 @@
-import React from 'react';
+/* eslint-disable */
+import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import ButtonBase from '@material-ui/core/ButtonBase';
 import { Link } from 'react-router-dom';
-import Product from './Product';
 import '../../../public/styles.css';
+import Product from './Product';
 
-const ProductsList = ({ products }) => {
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    margin: 'auto',
+    maxWidth: 500,
+  },
+  image: {
+    width: 128,
+    height: 128,
+  },
+  img: {
+    margin: 'auto',
+    display: 'block',
+    maxWidth: '100%',
+    maxHeight: '100%',
+  },
+}));
 
+// const Product = ({ item_name, name, price, about })
+
+export default function ProductsList({products}) {
+  const classes = useStyles();
+  
   const renderProducts = () => {
     return products.map((product, i)=> {
       return <Product key={`product: ${i}`}{...product}/>
     })
   }
-    return(
-      <> 
-        <nav style={styles.nav}>
-          <div>
-            <Link to='/main' style={styles.navLinkHome}>
-              <img src="../../../public/assets/NeighborsTableIcon.png" height="150"></img>
-            </Link>
-          </div>
-          <Link to='/new' style={styles.navLinkProduct}> {/* Input text here, position is to the right of NT */ }</Link>
-        </nav>
-        <div style={styles.container}>{renderProducts()}</div>
-      </>
-    )
-}
 
-export default ProductsList;
+  return (
+    <div className={classes.root}>
+      <Link to='/main'>
+        <img src="../../../public/assets/NeighborsTableIcon.png" height="150"></img>
+      </Link>
 
-const styles = {
-  container: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(30rem, 1fr))',
-    gridGap: '1rem',
-    margin: '10rem 2rem'
-  },
-    
-  nav: {
-    display: 'flex',
-    // justifyContent: 'space-between',
-    alignItems: 'center',
-    color: '#EAEAEA',
-    backgroundColor: '#3F9E4D',
-    minHeight: '15vh',
-    width: '100%',
-    padding: '0 2rem',
-    marginTop: '-.5rem',
-    marginLeft: '-.5rem',
-    opacity: '.9',
-    position: 'fixed',
-    top: '0'
-  },
-  navLinkHome: {
-    fontFamily: 'Varela Round',
-    fontSize: '2rem',
-    color: '#EAEAEA',
-    fontWeight: '900',
-    textDecoration: 'none',
-  },
-  navLinkProduct: {
-    fontFamily: 'Varela Round',
-    fontSize: '1.2rem',
-    color: 'aliceblue',
-    fontWeight: '900',
-    textDecoration: 'none',
-    marginLeft: '4rem',
-  }
+      {<h1> Zip code goes here </h1>}
+
+
+      <div>{renderProducts()}</div>
+      <Paper className={classes.paper}>
+        <Grid container spacing={2}>
+          <Grid item>
+            <ButtonBase className={classes.image}>
+              <img className={classes.img} alt="complex" src="../assets/NeighborsTableIconClear.png" />
+            </ButtonBase>
+          </Grid>
+          <Grid item xs={12} sm container>
+            <Grid item xs container direction="column" spacing={2}>
+              <Grid item xs>
+                <Typography gutterBottom variant="subtitle1">
+                  Standard license
+                </Typography>
+                <Typography variant="body2" gutterBottom>
+                  Full resolution 1920x1080 • JPEG
+                </Typography>
+                <Typography variant="body2" color="textSecondary">
+                  ID: 1030114
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant="body2" style={{ cursor: 'pointer' }}>
+                  Remove
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid item>
+              <Typography variant="subtitle1">$19.00</Typography>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Paper>
+    </div>
+  );
 }

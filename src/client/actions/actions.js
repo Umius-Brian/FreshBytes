@@ -2,6 +2,7 @@ import * as types from '../constants/actionTypes';
 import axios from 'axios'
 
 export const getProducts = (zip) => {
+  console.log("inside getProducts (actions.js)")
   return (dispatch) => {
     axios.get(`/api/${zip}/products`)
     .then((res) => {

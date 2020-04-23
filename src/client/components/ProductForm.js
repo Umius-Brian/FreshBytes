@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
@@ -16,12 +18,12 @@ class ProductForm extends React.Component {
   
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.addProduct(this.state)
+    this.props.getProducts(this.state)
     this.setState({submitted: true})
   }
 
   render() {
-    if(this.state.submitted === true) return <Redirect to='/'/>
+    if(this.state.submitted === true) return <Redirect to='/main'/>
     else return (
       <div>
         <nav style={styles.nav}>
@@ -52,7 +54,7 @@ class ProductForm extends React.Component {
             <div style={styles.subFormDiv}>
               <h3 style={styles.h3}>Product Info</h3>
               <div style={styles.inputDiv}>
-              <TextField id="standard-name" label="Product" name='title'>Product</TextField>
+              <TextField id="standard-name" label="Product" name='item_name'>Product</TextField>
               </div>
               <div style={styles.inputDiv}>
               <TextField id="standard-name" label="Price" name='price'>Price</TextField>
@@ -77,7 +79,7 @@ const styles = {
   formContainer: {
     display: 'flex',
     flexDirection: 'column',
-    width: '10rem',
+    // width: '10rem',
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
@@ -145,3 +147,4 @@ const styles = {
 
   }
 }
+

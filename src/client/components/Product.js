@@ -1,9 +1,9 @@
 /* eslint-disable */
 
 import React, {useState} from 'react';
-import SellerModal from './SellerModal';
+// import SellerModal from './SellerModal';
 
-const Product = ({ name, price, about, title, description, email, phone }) => {
+const Product = ({ item_name, name, price, about, title, descripton, email, phone }) => {
     const [toggle, setToggle] = useState(false)
 
     const handleModal = () => {
@@ -20,7 +20,7 @@ const Product = ({ name, price, about, title, description, email, phone }) => {
       </div>
       <div>
         <h3 style={styles.headerFont}>{title}</h3>
-        <h2 style={styles.headerFont}></h2>
+        <h2 style={styles.headerFont}>{item_name}</h2>
         <h1 style={styles.headerFont}>${price}</h1>
         <p style={styles.headerFont}>{name}</p>
         <p style={styles.description}>{about}</p>

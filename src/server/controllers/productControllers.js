@@ -3,7 +3,8 @@ const db = require('../models/models.js');
 const productControllers = {};
 // read portion of CRUD
 productControllers.getZip = (req, res, next) => {
-  const zipGetReq = `SELECT p.name,p.price,p.description,s.name,s.about,s.phone
+  const zipGetReq = 
+                    `SELECT s.name, s.about, p.item_name, p.price, p.description
                     FROM product p
                     INNER JOIN seller s
                     ON p.seller_id = s.seller_id
@@ -20,15 +21,15 @@ productControllers.getZip = (req, res, next) => {
 //
 productControllers.productSave = (req, res, next) => {
   const {
-    title, price, zip, description
+     item_name, price, description
   } = req.body.product;
   const sellerId = res.locals.seller_id;
-  const values = [title, price, zip, description, sellerId];
-  console.log('this is our sellerId in productSave: ', sellerId);
+  const values = [ item_name, price, description, seller_id];
+  console.log('this is our sellerId in productSave: ', seller_id);
   // create portion of CRUD
   // on insert you need to pass in the res.locals id from sellSave
-  const saveProduct = ` INSERT INTO product(title,price,zip,description,seller_id)
-  VALUES ($1,$2,$3,$4,$5)`;
+  const saveProduct = ` INSERT INTO product(item_name, price, description)
+  VALUES ($1,$2,$3)`;
   db.query(saveProduct, values)
     .then((products) => {
       next();
@@ -42,11 +43,11 @@ productControllers.productSave = (req, res, next) => {
 productControllers.sellerSave = (req, res, next) => {
   console.log(req.body.product);
   const {
-    name, zip, about, phone, email
+    name, zip, about, phone
   } = req.body.product;
-  const values = [name, zip, about, phone, email];
-  const sellerSaveQuery = ` INSERT INTO seller(name,zip,about,phone,email)
-    VALUES ($1,$2,$3,$4,$5) 
+  const values = [name, zip, about, phone];
+  const sellerSaveQuery = ` INSERT INTO seller(name,zip,about,phone)
+    VALUES ($1,$2,$3,$4) 
     RETURNING seller_id`;
   db.query(sellerSaveQuery, values)
     .then((sellers) => {
