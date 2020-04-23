@@ -24,7 +24,7 @@ class ProductForm extends React.Component {
         <nav style={styles.nav}>
           <div>
             <Link to='/main' style={styles.navLinkHome}>
-              <img src="../../../public/assets/NeighborsTableUC.png" height="150"></img>
+              <img src="../../../public/assets/NeighborsTableIcon.png" height="200"></img>
             </Link>
           </div>
         </nav>
@@ -83,6 +83,7 @@ export default ProductForm
 const styles = {
   formContainer: {
     display: 'flex',
+    backgroundImage: 'url(' + 'https://images.unsplash.com/uploads/141247613151541c06062/c15fb37d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80%27' + ')',
     flexDirection: 'column',
     width: '10rem',
     alignItems: 'center',
@@ -113,7 +114,7 @@ const styles = {
     // justifyContent: 'space-between',
     alignItems: 'center',
     color: '#EAEAEA',
-    backgroundColor: '#3F9E4D',
+    // backgroundColor: '#3F9E4D',
     minHeight: '15vh',
     width: '100%',
     padding: '0 2rem',

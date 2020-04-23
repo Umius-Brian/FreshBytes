@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import '../stylesheets/app.css';
+import logo from '../assets/NeighborsTableIconClear.png';
 
 function Copyright() {
   return (
@@ -27,7 +28,7 @@ function Copyright() {
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(0),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -59,10 +60,11 @@ export default function SignIn(props) {
 
   return (
     <Container component="main" maxWidth="xs">
+      <img className="table" src={logo} alt="Logo" />
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-          Welcome to FreshBytes!
+          Welcome to Neighbor's Table!
         </Typography>
         <form className={classes.form} onSubmit={handleSubmit} noValidate>
           <TextField
@@ -104,8 +106,7 @@ export default function SignIn(props) {
             🥦 Sell Your Produce 🥦
             </Button>
           </Link>
-        </form>
-        <br></br>      
+        </form>  
       </div>
       <Box mt={8}>
         <Copyright />
