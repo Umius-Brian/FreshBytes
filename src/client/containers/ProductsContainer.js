@@ -6,7 +6,7 @@ import { Switch, Route } from 'react-router-dom';
 import * as actions from '../actions/actions';
 import Home from '../components/Home';
 import ProductsList from '../components/ProductsList';
-import ProductForm from '../components/ProductForm';
+import ProductFormContainer from './ProductFormContainer';
 import Login from '../containers/Login';
 
 
@@ -29,7 +29,7 @@ class ProductsContainer extends React.Component {
         <Switch>
           <Route exact path="/" render={() => <Login getProducts={getProducts}/> }/>
           <Route exact path="/main" render={() => <Home getProducts={getProducts}/> }/>
-          <Route exact path="/new" render={() => <ProductForm addProduct={addProduct}/>} />
+          <Route exact path="/new" render={() => <ProductFormContainer addProduct={addProduct}/>} />
           <Route exact path="/products" render={()=> <ProductsList products={products}/>} />
         </Switch>
       </div>

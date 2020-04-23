@@ -1,5 +1,8 @@
 import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+import '../stylesheets/app.css';
 
 class ProductForm extends React.Component {
   state = {
@@ -28,48 +31,38 @@ class ProductForm extends React.Component {
             </Link>
           </div>
         </nav>
+        <div className="inspiration"></div>
         <div style={styles.formContainer} className="formContainer">
           <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
             <div style={styles.subFormDiv}>
               <h3 style={styles.h3}>Seller Description</h3>
               <div style={styles.inputDiv}>
-                <label>Name</label>
-                <input style={styles.input} name='name'/>
+                <TextField id="standard-name" label="Name" name='name'>Name</TextField>
               </div>
               <div style={styles.inputDiv}>
-                <label>Email</label>
-                <input style={styles.input} name='email'/>
+              <TextField id="standard-name" label="Store Name" name='about'>Store Name</TextField>
               </div>
               <div style={styles.inputDiv}>
-                <label>Phone</label>
-                <input style={styles.input} name='phone'/>
+              <TextField id="standard-name" label="Phone" name='phone'>Phone Number</TextField>
               </div>
               <div style={styles.inputDiv}>
-                <label>About</label>
-                <input style={styles.input} name='about'/>
-              </div>
-              <div style={styles.inputDiv}>
-                <label>Zip</label>
-                <input style={styles.input} name='zip'/>
+              <TextField id="standard-name" label="Zipcode" name='zip'>Zipcode</TextField>
               </div>
             </div> 
             <div style={styles.subFormDiv}>
               <h3 style={styles.h3}>Product Info</h3>
               <div style={styles.inputDiv}>
-                <label>Product</label>
-                <input style={styles.input} name='title'/>
+              <TextField id="standard-name" label="Product" name='title'>Product</TextField>
               </div>
               <div style={styles.inputDiv}>
-                <label>Price</label>
-                <input style={styles.input} name='price'/>
+              <TextField id="standard-name" label="Price" name='price'>Price</TextField>
               </div>
               <div style={styles.inputDiv}>
-                <label>Description</label>
-                <input style={styles.input} name='description'/>
+              <TextField id="standard-name" label="Description" name='description'>Description</TextField>
               </div>
             </div>
             <div style={styles.buttonDiv}>
-                <button style={styles.button}type='submit'>Submit</button>
+                <button style={styles.button} type='submit'>Submit</button>
             </div>
           </form>
         </div>
@@ -78,18 +71,17 @@ class ProductForm extends React.Component {
   }
 }
 
-export default ProductForm
+export default ProductForm;
 
 const styles = {
   formContainer: {
     display: 'flex',
-    backgroundImage: 'url(' + 'https://images.unsplash.com/uploads/141247613151541c06062/c15fb37d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80%27' + ')',
     flexDirection: 'column',
     width: '10rem',
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    marginTop: '10rem',
+    
   },
   input: {
     minWidth: '200px',
@@ -111,18 +103,13 @@ const styles = {
   },
   nav: {
     display: 'flex',
-    // justifyContent: 'space-between',
     alignItems: 'center',
     color: '#EAEAEA',
-    // backgroundColor: '#3F9E4D',
     minHeight: '15vh',
     width: '100%',
     padding: '0 2rem',
-    marginTop: '-.5rem',
-    marginLeft: '-.5rem',
     opacity: '.9',
     position: 'fixed',
-    top: '0'
   },
   navLinkHome: {
     fontFamily: 'Varela Round',
